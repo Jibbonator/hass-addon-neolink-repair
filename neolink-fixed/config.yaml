@@ -1,6 +1,6 @@
 name: "Neolink Fixed"
 description: "Neolink RTSP for Reolink cameras - fixed build from source"
-version: "0.6.5"
+version: "0.6.6"
 slug: "neolink-fixed"
 arch:
   - aarch64
