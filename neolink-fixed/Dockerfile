@@ -21,9 +21,10 @@ RUN ARCH=$(uname -m) && \
     else echo "Unsupported arch: $ARCH" && exit 1; fi && \
     curl -fsSL "https://github.com/QuantumEntangledAndy/neolink/releases/download/v${NEOLINK_VERSION}/${ASSET}" \
     -o /tmp/neolink.zip && \
-    unzip /tmp/neolink.zip neolink -d /usr/local/bin/ && \
+    unzip /tmp/neolink.zip -d /tmp/neolink_extracted/ && \
+    find /tmp/neolink_extracted/ -name "neolink" -not -name "*.d" -exec mv {} /usr/local/bin/neolink \; && \
     chmod +x /usr/local/bin/neolink && \
-    rm /tmp/neolink.zip
+    rm -rf /tmp/neolink.zip /tmp/neolink_extracted
 
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
