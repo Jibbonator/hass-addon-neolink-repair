@@ -21,8 +21,8 @@ case $LOG in
 esac
 
 case $MODE in
-  rtsp) neolink rtsp --config /config/neolink.toml ;;
-  mqtt) neolink mqtt --config /config/neolink.toml ;;
-  dual) neolink mqtt-rtsp --config /config/neolink.toml ;;
+  rtsp) exec neolink rtsp --config /config/neolink.toml ;;
+  mqtt) exec neolink mqtt --config /config/neolink.toml ;;
+  dual) exec neolink mqtt-rtsp --config /config/neolink.toml ;;
   *)    echo "Unknown mode option" ;;
 esac
