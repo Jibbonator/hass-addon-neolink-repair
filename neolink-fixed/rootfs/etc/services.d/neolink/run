@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bashio
+
+MODE=$(bashio::config 'mode')
+LOG=$(bashio::config 'log')
+
+case $LOG in
+  debug) export RUST_LOG="neolink=debug" ;;
+  info)  export RUST_LOG="neolink=info"  ;;
+  warn)  export RUST_LOG="neolink=warn"  ;;
+  error) export RUST_LOG="neolink=error" ;;
+esac
+
+bashio::log.info "Starting neolink in ${MODE} mode"
+
+case $MODE in
+  rtsp) exec neolink rtsp --config /config/neolink.toml ;;
+  mqtt) exec neolink mqtt --config /config/neolink.toml ;;
+  dual) exec neolink mqtt-rtsp --config /config/neolink.toml ;;
+esac

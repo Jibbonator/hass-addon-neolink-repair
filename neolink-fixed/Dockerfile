@@ -1,6 +1,4 @@
-FROM ghcr.io/jibbonator/neolink-fixed:0.6.2
+FROM ghcr.io/jibbonator/neolink-fixed:0.6.3
 
-COPY run.sh /run.sh
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
+COPY rootfs /
+RUN chmod a+x /etc/services.d/neolink/run
