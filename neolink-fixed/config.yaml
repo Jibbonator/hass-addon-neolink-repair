@@ -1,11 +1,13 @@
 name: "Neolink Fixed"
 description: "Neolink RTSP for Reolink cameras - fixed build from source"
-version: "0.7.8"
+version: "0.7.9"
 slug: "neolink-fixed"
 arch:
   - aarch64
   - amd64
 host_network: true
+ulimits:
+  nofile: 65535
 map:
   - type: addon_config
     read_only: False
