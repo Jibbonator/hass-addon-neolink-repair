@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+ulimit -n 65535
 
 CONFIG_PATH=/data/options.json
 MODE=$(jq --raw-output '.mode // empty' $CONFIG_PATH)
