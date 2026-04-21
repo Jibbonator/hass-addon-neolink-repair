@@ -1,8 +1,6 @@
-ARG BUILD_FROM
-FROM ghcr.io/jibbonator/neolink-fixed:0.6.3 AS source
+FROM ghcr.io/jibbonator/neolink-fixed:0.6.3
 
-FROM ${BUILD_FROM}
+COPY run.sh /run.sh
+RUN chmod a+x /run.sh
 
-COPY --from=source /usr/local/bin/neolink /usr/local/bin/neolink
-COPY rootfs /
-RUN chmod a+x /etc/services.d/neolink/run
+CMD [ "/run.sh" ]
